@@ -21,12 +21,15 @@ input, select, button, textarea {
 meter, progress, output {
 	max-width: 100% ;
 }
-div#tswcontent {
-	background-color: salmon;
-	padding-top: 175px;
-	text-align: center;
-	padding-left: 250px;
-	padding-right: 250px;
+#tswcontent {
+	background-color: cadetblue;
+	padding-top: 5px;
+	text-align: left;
+	padding-left: 20px;
+	padding-right: 20px; /* This was 1000px, which was too large and squished the content */
+	font-size: 18px;
+	font-family: 'Times New Roman', Times, serif;
+
 	
 }
 div#tswcontproper {
@@ -106,4 +109,22 @@ div#Login {
 #hes{
 
 	color: aqua;
+}
+
+/* --- About Me Page Layout --- */
+.about-me-container {
+	display: flex; /* This is the key to placing items side-by-side */
+	align-items: flex-start; /* Aligns the top of the text and image */
+	gap: -100px; /* Creates a nice space between the text and the image */
+}
+
+.about-me-text {
+	flex: 1; /* Allows the text to take up the available space */
+	min-width: 0; /* Prevents text from overflowing its container */
+}
+
+#wpi {
+	max-width: 350px; /* Controls the image size */
+	height: auto; /* Maintains the correct aspect ratio */
+	border-radius: 10px; /* Adds soft, rounded corners to the image */
 }
