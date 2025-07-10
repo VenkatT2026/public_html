@@ -1,0 +1,55 @@
+body {
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    background-color: black;
+    color: greenyellow;
+}
+
+.header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-right: 115px;
+}
+
+.cell-holder {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-rows: repeat(5, 1fr);
+    width: 48%;
+    aspect-ratio: 1/1;
+    gap: 8px;
+    padding-left: 375px;
+}
+
+.cell {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(211, 211, 211, 0.5);
+    font-size: larger;
+    overflow-wrap: anywhere;
+}
+
+.cell:hover {
+
+    size: larger;
+    color: red;
+    border-radius: 10px;
+    border-color: cyan;
+
+}
+
+.cell.selected {
+    border: yellow solid 8px;
+}
+
+.cell.empty {
+    background-image: url("broken\ tv\ screen\ gif.gif");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.no-margin {    
+    margin: 0 0;
+}
