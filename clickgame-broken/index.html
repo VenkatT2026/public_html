@@ -13,6 +13,7 @@
 <body>
     <h1 class="center">Gompei's Grass Game</h1>
     <h2 class="center" id="score">Score: 0</h2>
+    <h2 class="center" id="gems">Gems: 0</h2>
     <div id="store-container">
         <div class="store" name="Lawn" cost="5" onclick="buy(event.currentTarget)">
             <div class="widget" reap="2" cooldown="0.5" auto="false" name="Lawn">
@@ -45,6 +46,26 @@
             <p>150 points</p>
             <p>+100 sqft</p>
             <p>5.0s</p>
+        </div>
+        <div class="store" name="Mega-Gompei" cost="500000" onclick="buy(event.currentTarget)" title="Mega Gompei: Costs 500,000. Harvests every 0.75s for a random amount between -100k and 100k points.">
+            <div class="widget" name="Mega-Gompei" reap="???" cooldown="0.75" auto="true">
+                <img src="Adobe Express - file.png" alt="Mega Gompei">
+                <div class="overlay-slide" style="animation-duration: 0.75s;"></div>
+            </div>
+            <p>Mega-Gompei</p>
+            <p>500,000 points</p>
+            <p>-100k to +100k sqft</p>
+            <p>0.75s</p>
+        </div>
+        <div class="store" name="Crazy-Gompei" cost="2000000" gem-cost="50" onclick="buy(event.currentTarget)" title="Crazy Gompei: Costs 2,000,000 points OR 50 Gems. Generates 10 Gems every second.">
+            <div class="widget" name="Crazy-Gompei" gem-reap="10" cooldown="1.0" auto="true">
+                <img src="Gompei_construction03-removebg-preview.png" alt="Mega Gompei">
+                <div class="overlay-slide" style="animation-duration: 1s;"></div>
+            </div>
+            <p>Crazy-Gompei</p>
+            <p>2M points or 50 Gems</p>
+            <p>+10 Gems</p>
+            <p>1.0s</p>
         </div>
     </div>
     <div id="widget-container"></div>
