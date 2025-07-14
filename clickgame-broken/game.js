@@ -161,3 +161,30 @@ function showPoint(widget, points, isGem = false) {
 
 changeScore(0);
 changeGems(0);
+
+function reset () {
+    resetbuttton = document.getElementById("reset")
+    resetbuttton.addEventListener("click", function () {
+        location.reload();
+    })
+        
+    }
+
+
+reset();
+
+const lightningElement = document.getElementById('lightning-effect');
+
+// Only run this logic if we are on the boss page (where the lightning element exists)
+if (lightningElement) {
+    // Set an interval to trigger the lightning every 30 seconds
+    setInterval(() => {
+        // Show the lightning
+        lightningElement.style.display = 'block';
+
+        // Hide it after a short time (e.g., 1 second)
+        setTimeout(() => {
+            lightningElement.style.display = 'none';
+        }, 1000); // 1000ms = 1 second
+    }, 30); // 30000ms = 30 seconds
+}

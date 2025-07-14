@@ -18,11 +18,18 @@ body {
     margin-bottom: 10px;
 }
 
+#game-area {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+}
+
 #widget-container {
     border: 5px solid white;
-    width: 100%;
+    flex-grow: 1; /* Allows this container to grow and fill available space */
     display: flex;
     flex-wrap: wrap;
+    align-items: flex-start; /* Aligns items to the top, useful if heights differ */
 }
 
 #super-gompei {
@@ -139,4 +146,27 @@ body {
     100% {
         width: 0%;
     }
+}
+
+/* Boss character specific styles */
+#boss-character {
+    flex-shrink: 0; /* Prevents the boss container from shrinking */
+    text-align: center;
+    color: white;
+    border: 3px solid red;
+    padding: 5px;
+    background-color: rgba(0, 0, 0, 0.4);
+}
+
+/* Lightning Effect Styling */
+#lightning-effect {
+    display: none; /* Hidden by default */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 9999;
+    pointer-events: none; /* Allows clicks to pass through */
+    object-fit: cover; /* Ensures the GIF covers the screen */
 }

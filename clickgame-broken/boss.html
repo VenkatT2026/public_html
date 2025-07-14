@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gompeii's Grass Game</title>
+    <title>Boss Fight</title>
     <!-- <link rel="stylesheet" href="overlays.css"> -->
     <link rel="stylesheet" href="styles.css">
     <script src="./game.js" defer></script>
@@ -13,9 +13,9 @@
 <body>
     <div><button>Tasks
     </button> 
-    <button><a href="boss.html">Next </a></button>
+    <button><a href = "index.html">Last Level</a></button>
      <button id = "reset">Reset</button></div>
-    <h1 class="center">Gompei's Grass Game</h1>
+    <h1 class="center">Boss Fight</h1>
     <h2 class="center" id="score">Score: 0</h2>
     <h2 class="center" id="gems">Gems: 0</h2>
     <div id="store-container">
@@ -72,8 +72,19 @@
             <p>1.0s</p>
         </div>
     </div>
-    <div id="widget-container"></div>
-
+    <div id="game-area">
+        <div id="widget-container">
+            <!-- Gompeis purchased will appear here, on the left -->
+        </div>
+        <div id="boss-character">
+            <div class="widget">
+                <img src="dragon.png" alt="The Dragon Boss">
+                <img src="lightning.gif" id="lightning-effect" alt="Lightning Effect">
+            </div>
+            <p>King Dragon Boss</p>
+            <button>FIGHT</button>
+        </div>
+    </div>
 </body>
 
 </html>
