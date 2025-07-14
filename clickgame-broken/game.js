@@ -186,5 +186,5 @@ if (lightningElement) {
         setTimeout(() => {
             lightningElement.style.display = 'none';
         }, 1000); // 1000ms = 1 second
-    }, 30); // 30000ms = 30 seconds
+    }, 30000); // 30000ms = 30 seconds
 }
