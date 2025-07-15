@@ -14,6 +14,7 @@ class Paddle {
         this.color = color;
         this.side = side;
         this.vely = 0;
+        this.velx = 0;
     }
 
     move(is_cpu, ball) {
@@ -21,7 +22,9 @@ class Paddle {
             // ball.y <- where the ball is
             // this.y <- where the paddle is
             // this.l <- how long the paddle is
-
+            
+            this.y = ball.y;
+        } else {
             // control this.vy using ball
             // don't set this.y! (cheating)
             let desired = ball.posy - this.height / 2;
@@ -29,7 +32,8 @@ class Paddle {
             // The original code used 'vel' which is undefined. It should be 'diff'.
             this.vely = Math.min(PADDLE_VELOCITY, Math.max(-PADDLE_VELOCITY, diff));
         }
-        this.posy = Math.min(BOARD_HEIGHT - this.height, Math.max(0, this.posy + this.vely));
+        this.posy += this.vely;
+        this.posx += this.velx;
     }
 
     bounce(ball) {

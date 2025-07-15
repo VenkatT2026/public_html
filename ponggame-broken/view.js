@@ -8,22 +8,34 @@ function updateScore(model) {
 }
 
 function draw_game(model) {
-    ctx.fillStyle = "lightgrey";
+    ctx.fillStyle = "Black";
     ctx.fillRect(0, 0, BOARD_WIDTH, BOARD_HEIGHT);
+
+    // Draw the border
+    ctx.strokeStyle = "white";
+    ctx.lineWidth = 5;
+    ctx.strokeRect(0, 0, BOARD_WIDTH, BOARD_HEIGHT);
+
+    // Draw the dotted line in the middle
+    ctx.beginPath();
+    ctx.setLineDash([10, 15]);
+    ctx.moveTo(BOARD_WIDTH / 2, 0);
+    ctx.lineTo(BOARD_WIDTH / 2, BOARD_HEIGHT);
+    ctx.stroke();
+    ctx.closePath();
+    ctx.setLineDash([]); // Reset to solid line for other drawings
+
     draw_ball(ctx, model.ball);
     draw_paddle(ctx, model.paddleL);
     draw_paddle(ctx, model.paddleR);
 }
 
 function draw_ball(ctx, ball) {
-    ctx.fillStyle = "hotpink";
-    ctx.strokeStyle = "black";
-    ctx.lineWidth = 2;
+    ctx.fillStyle = "white";
 
     ctx.beginPath();
     ctx.arc(ball.posx, ball.posy, BALL_RADIUS, 0, 2 * Math.PI); 
     ctx.fill();
-    ctx.stroke();
     ctx.closePath();
 }
 

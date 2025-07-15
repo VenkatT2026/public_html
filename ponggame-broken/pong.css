@@ -1,16 +1,18 @@
 body {
     text-align: center;
     font-family: 'Courier New', Courier, monospace;
-    background-color: rgb(126, 126, 143);
+    background-color: rgba(42, 42, 43, 0.918);
 }
 
 h1 {
     font-size: 60px;
     margin: 0;
+    color: white;
 }
 
 h3 {
     margin: 0;
+    color: whitesmoke;
 }
 
 #scoreboard {

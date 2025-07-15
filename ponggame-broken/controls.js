@@ -16,6 +16,15 @@ function keyDown(event) {
         case "KeyS":
             model.paddleL.vely = PADDLE_VELOCITY;
             break;
+        case "KeyA":
+            model.paddleL.velx = -PADDLE_VELOCITY;
+            break;
+        case "KeyD":
+            model.paddleL.velx = PADDLE_VELOCITY;
+            break;
+        case "Space":
+            resetGame();
+            break;
         case "End":
             model.resetGame();
             break;
@@ -35,6 +44,10 @@ function keyUp(event) {
         case "KeyW":
         case "KeyS":
             model.paddleL.vely = 0;
+            break;
+        case "KeyA":
+        case "KeyD":
+            model.paddleL.velx = 0;
             break;
     }
 }
