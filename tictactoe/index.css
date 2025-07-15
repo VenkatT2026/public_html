@@ -1,0 +1,39 @@
+#container {
+
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    aspect-ratio: 1/1;
+    width: 75vh;
+}
+
+.cell {
+
+    display: flex; 
+    justify-content: center;
+    align-items: center;
+    border-width: 1px;
+    border-style: solid;
+    border-color: black;
+    font-size: 200%
+    
+};
+
+
+body {
+    display: flex;
+    height: 100vh;
+    text-align: center ;
+    
+}
+
+.cell:hover{
+
+    background: lightcoral;
+    border-color: magenta;
+    border-width: 5px;
+
+}
+
+.cssisbad {
+    line-height: absolute;
+}
