@@ -1,0 +1,20 @@
+body{
+    text-align: center;
+    background-color: lightblue;
+
+}
+
+#play{
+    color: red;
+    background-color: bisque;
+    width: 10%;
+    height: 15%;
+    margin-left: 45%;
+}
+
+#play:hover{
+
+    color: greenyellow;
+    background-color: black;
+
+}
