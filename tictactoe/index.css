@@ -16,14 +16,6 @@
     border-color: black;
     font-size: 200%
     
-};
-
-
-body {
-    display: flex;
-    height: 100vh;
-    text-align: center ;
-    
 }
 
 .cell:hover{
@@ -34,6 +26,20 @@ body {
 
 }
 
-.cssisbad {
-    line-height: absolute;
+body{
+    padding-top: 5%;
+    display: flex;
+    flex-direction: column; /* This stacks the items vertically */
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    gap: 20px; /* Adds a nice space between the keypad and the number display */
+}
+
+#callcenter{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    font-size: 200%;
 }
