@@ -1,16 +1,15 @@
 class AiCookApp {
     constructor() {
         this.apikey = localStorage.getItem('apikey');
-        this.initiallilizeElements();
+        this.initializeElements();
         this.bindEvents();
         this.loadApiKey();
     }
-    initiallilizeElements() {
+    initializeElements() {
         this.apiKeyInput = document.getElementById('apiKey');
         this.saveApiKeyBtn = document.getElementById('saveApiKey');
         this.ingredientsInput = document.getElementById('ingredients');
-        this.generateRecipeBtn = document.getElementById('generateRecipe');
-        this.recipeContainer = document.getElementById('recipe');
+        this.generateRecipeBtn = document.getElementById('generateRecipe'); 
         this.dietarySelect = document.getElementById('dietary');
         this.cuisineSelect = document.getElementById('cuisine');
         this.loading = document.getElementById('loading');
@@ -20,7 +19,7 @@ class AiCookApp {
     bindEvents() {
         this.saveApiKeyBtn.addEventListener('click', () => this.saveApiKey());
         this.generateRecipeBtn.addEventListener('click', () => this.generateRecipe());
-        this.apiKeyInput.addEventListener('keypress', () => {
+        this.apiKeyInput.addEventListener('keypress', (e) => {
             if (e.key === 'Enter') {
                 this.saveApiKey();
             }
@@ -32,12 +31,12 @@ class AiCookApp {
         });
     }
     saveApiKey() {
-        const apiKey = this.apiKeyInput.value.trim();;
+        const apiKey = this.apiKeyInput.value.trim();
         if (apiKey) {
             localStorage.setItem('apikey', apiKey);
             this.apikey = apiKey;
             this.updateApiKeyStatus(true);
-            this.showSucesss('API Key saved Sucessfully!')
+            this.showSuccess('API Key saved Sucessfully!')
 
         } else {
             this.showError('Please enter a valid API Key')
@@ -55,12 +54,12 @@ class AiCookApp {
 
     updateApiKeyStatus(isValid) {
         if (isValid) {
-            Btn.textContent = 'Saved ✅';
-            Btn.style.background = 'green'
+            this.saveApiKeyBtn.textContent = 'Saved ✅';
+            this.saveApiKeyBtn.style.background = 'green'
         }
         else {
-            btn.textContent = 'save';
-            btn.style.background = 'red'
+            this.saveApiKeyBtn.textContent = 'Save';
+            this.saveApiKeyBtn.style.background = '' // Revert to default
         }
     }
 
@@ -78,15 +77,46 @@ class AiCookApp {
         this.hideRecipe();
 
         try {
-            const recipe = await this.fetchRecipe(ingredients);
+            const recipe = await this.callGeminiAPI(ingredients);
             this.displayRecipe(recipe);
         } catch (error) {
-            console.error('Error generating recipe:', error);
+            console.error('cooked', error);
             this.showError('An error occurred while generating the recipe.');
         } finally {
             this.showLoading(false);
 
         }
+    }
+
+    showLoading(show) {
+        if (show) {
+            this.loading.classList.add('show');
+            this.generateRecipeBtn.disabled = true;
+            this.generateRecipeBtn.textContext = 'gernerating....'
+        } else {
+            this.loading.classList.remove('show');
+            this.generateRecipeBtn.disabled = false;
+            this.generateRecipeBtn.textContext = 'Generate Recipe'
+        }
+    }
+
+    hideRecipe() {
+        this.recipeSection.classList.remove('show');
+    }
+
+    showRecipe() {
+        this.recipeSection.classList.add('show');
+    
+    }
+
+    showError(message) {
+        // A simple alert for now, you can replace this with a more elegant UI element
+        alert(message);
+    }
+
+    showSuccess(message) {
+        // A simple alert for now
+        alert(message);
     }
 
     async callGeminiAPI(ingredients) {
@@ -98,7 +128,7 @@ class AiCookApp {
             prompt += `Dietary preferences: ${dietary}.`;
         }
         if (cuisine) {
-            prompt += `Cuisine Type: ${cuisine}.}`;
+            prompt += `Cuisine Type: ${cuisine}.`;
         }
         prompt += `Please format your response as follows: 
         - recipe name
@@ -109,7 +139,7 @@ class AiCookApp {
         - instructions (numbered steps)
         - tips (optional)
         make sure the recipe is practical and delicious!`;
-        const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash-latest:generateContent?${this.apikey}`,
+        const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash-latest:generateContent?key=${this.apikey}`,
             {
                 method: 'POST',
                 headers: {
@@ -137,8 +167,18 @@ class AiCookApp {
             }
             const data = await response.json();
             return data.candidates[0].content.parts[0].text.trim();
-    
+    }
 
+    displayRecipe(recipeText) {
+        const formattedRecipe = this.formatRecipe(recipeText);
+        this.recipeContent.innerHTML = formattedRecipe;
+        this.showRecipe();
+
+    }
+
+    formatRecipe(text){
+        return text;
     }
 }
 
+document.addEventListener("DOMContentLoaded", () => new AiCookApp());
